@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-//@Table(name="Order")
+@Table(name="Order_Details") //Because Order is the key work in MySQL
 public class Order {
 	
 	@Id
