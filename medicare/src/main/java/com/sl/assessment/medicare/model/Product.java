@@ -1,5 +1,6 @@
 package com.sl.assessment.medicare.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +22,8 @@ public class Product {
 	private Double product_price;
 	private int product_quantity;
 	private byte[] product_product_image;
-	private int product_category_id;
+//	@Column(name="product_category_id")
+	private int productcategoryid;
 	private boolean product_status;
 	
 	public int getProduct_id() {
@@ -59,12 +61,12 @@ public class Product {
 	}
 	public void setProduct_product_image(byte[] product_product_image) {
 		this.product_product_image = product_product_image;
+	}	
+	public int getProductcategoryid() {
+		return productcategoryid;
 	}
-	public int getProduct_category_id() {
-		return product_category_id;
-	}
-	public void setProduct_category_id(int product_category_id) {
-		this.product_category_id = product_category_id;
+	public void setProductcategoryid(int productcategoryid) {
+		this.productcategoryid = productcategoryid;
 	}
 	public boolean isProduct_status() {
 		return product_status;

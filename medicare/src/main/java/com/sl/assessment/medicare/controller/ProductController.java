@@ -50,7 +50,7 @@ public class ProductController {
 	    s.setProduct_price(product.getProduct_price());
 	    s.setProduct_quantity(product.getProduct_quantity());
 	    s.setProduct_product_image(product.getProduct_product_image());
-	    s.setProduct_category_id(product.getProduct_category_id());
+	    s.setProductcategoryid(product.getProductcategoryid());
 	    s.setProduct_status(product.isProduct_status());
 	    productRepository.save(s);
 	  }
@@ -64,6 +64,11 @@ public class ProductController {
 	  public void deleteAllProducts() {
 		  productRepository.deleteAll();
 	    
+	  }
+	  
+	  @GetMapping("/products/productcategoryid")
+	  public List<Product> findByProductcategoryid(@PathVariable("productcategoryid") long productcategoryid) {
+		  return productRepository.findByProductcategoryidEquals(productcategoryid);	    
 	  }
 
 }

@@ -1,1 +1,50 @@
-<p>home works!</p>
+<!-- <p>home works!</p> -->
+
+<div class="container">
+    <div class="row">
+      <div class="col-3">
+        <ul class="list-group"
+        *ngFor="let category of categories; let i = index">
+        <!-- <a routerLink="/products/{{category.category_id}}" [(ngModel)]="productCategoryId" [value]="category.category_id">             -->
+        <a routerLink="" (click)="clickManage(category.category_id)">            
+            <li class="list-group-item">{{category.category_name}}</li>
+        </a>                        
+        </ul>          
+      </div>
+
+      <div class="col">
+        <div class="row-3">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <li 
+                    class="list-group-item" 
+                    *ngFor="let product of products; let i = index">
+                        <div *ngIf="i==0" class="carousel-item active">
+                            <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +product.product_product_image)">
+                        </div>
+                        <div *ngIf="i!=0" class="carousel-item">
+                            <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +product.product_product_image)">
+                        </div>
+                    </li>                
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="row-3">
+            <div class="container mt-3">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+      </div>
+      <!-- <div class="col-3">
+        
+      </div> -->
+    </div>
+  </div>

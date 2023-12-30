@@ -36,4 +36,8 @@ export class ProductService {
     return this.http.delete(baseUrl);
   }
 
+  findByProductcategoryid(productcategoryid: any): Observable<Product[]> {
+    return this.http.get<Product[]>(`${baseUrl}?productcategoryid=${productcategoryid}`);
+  }
+
 }
