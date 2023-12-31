@@ -1,1 +1,31 @@
-<p>login works!</p>
+<!-- <p>login works!</p> -->
+
+<div class="container">
+
+    <div class="mx-auto" style="height: 100px;"></div>
+    <div class="row">
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 300px;"></div>
+        <div class="col">
+            <form #userForm="ngForm" (ngSubmit)="submit(userForm)">
+                <div class="mb-3">
+                  <label for="userId" class="form-label">User Id</label>
+                  <input [(ngModel)]="userId" type="text" class="form-control" name="userId" aria-describedby="userId">                  
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input [(ngModel)]="password" type="password" class="form-control" name="password">
+                </div>                
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br><br>
+                <button *ngIf="isSubmitted && (!adminConfirm && !userConfirm)" type="button" class="btn btn-danger" disabled=true>{{errorMessage}}</button>                
+                <br>
+            </form>
+        </div>
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 300px;"></div>
+    </div>
+    <div class="mx-auto" style="height: 350px;"></div>
+    
+</div>
+

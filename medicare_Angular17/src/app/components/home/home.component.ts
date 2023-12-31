@@ -18,14 +18,14 @@ export class HomeComponent implements OnInit {
   categories?:Category[];
   productsByCategoryId?:Product[];
 
-  constructor(private productservice:ProductService,
-    private categoryservice:CategoryService,
+  constructor(private productService:ProductService,
+    private categoryService:CategoryService,
     public sanitizer: DomSanitizer){}
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
 
-    this.productservice.getAll().subscribe({
+    this.productService.getAll().subscribe({
       next:(data)=>{
         this.products=data;
         console.log(data);
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       error:(e)=>{console.error(e)}
     });
 
-    this.categoryservice.getAll().subscribe({
+    this.categoryService.getAll().subscribe({
       next:(data)=>{
         this.categories=data;
         console.log(data);
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
   clickManage(categoryId:any){
-    this.productservice.findByProductcategoryid(categoryId).subscribe({
+    this.productService.findByProductcategoryid(categoryId).subscribe({
       next:(data)=>{
         this.productsByCategoryId=data;
         console.log(data);

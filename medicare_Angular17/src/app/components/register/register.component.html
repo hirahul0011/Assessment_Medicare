@@ -1,1 +1,113 @@
-<p>register works!</p>
+<!-- <p>register works!</p> -->
+
+<div class="container">
+
+    <div class="mx-auto" style="height: 50px;"></div>
+    <div class="row">
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 300px;"></div>
+        <div class="col">
+            <div *ngIf="submitted" class="alert alert-success">
+                <p>Registration is successful!
+                    <br>Please login to proceed!
+                </p>                
+            </div>            
+            <form #userForm="ngForm" (ngSubmit)="submit(userForm)">                               
+                <div class="mb-3">
+                    <label for="userName" class="form-label">User Name</label>
+                    <input [(ngModel)]="userNameV" 
+                    required 
+                    minlength="8" 
+                    maxlength="20" 
+                    type="text" 
+                    class="form-control" 
+                    name="userName" aria-describedby="userName" ngModel #userName="ngModel">                  
+                    <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">                            
+                        <p *ngIf="userName.errors['required']">User Name is required!</p>
+                        <p *ngIf="userName.errors['minlength']">User Name must be atleast 8 characters long!</p>
+                        <p *ngIf="userName.errors['maxlength']">User Name can be atmax 20 characters long!</p>                        
+                    </div>
+                    <div *ngIf="userName.touched && userName.valid && !userNameAvailability()" class="alert alert-danger">
+                        <p>User Name {{userNameV}} is not available!</p>                        
+                    </div>
+                    <div *ngIf="userName.touched && userName.valid && userNameAvailability()" class="alert alert-success">
+                        <p>User Name {{userNameV}} is available!</p>                        
+                    </div>
+
+                    <!-- <label for="name">Name</label>
+                        <input required minlength="8" maxlength="20" pattern="John Doe" type="text" name="userName" class="form-control" ngModel #userName="ngModel">
+                        <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">                            
+                            <p *ngIf="userName.errors['required']">Name is required!</p>
+                            <p *ngIf="userName.errors['minlength']">Name must be atleast 8 characters long!</p>
+                            <p *ngIf="userName.errors['maxlength']">Name can be atmax 20 characters long!</p>
+                            <p *ngIf="userName.errors['pattern']">Name must only be John Doe!</p>
+                    </div> -->
+
+                </div>
+                <div class="mb-3">                    
+                    <label for="password" class="form-label">Password</label>
+                    <input [(ngModel)]="passwordV" 
+                    required 
+                    minlength="8" 
+                    maxlength="20" 
+                    type="password" class="form-control" name="password" ngModel #password="ngModel">
+                    <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                        <p *ngIf="password.errors['required']">Password is required!</p>                        
+                        <p *ngIf="password.errors['minlength']">Password must be atleast 8 characters long!</p>
+                        <p *ngIf="password.errors['maxlength']">Password can be atmax 20 characters long!</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input [(ngModel)]="confirmPasswordV" 
+                    required 
+                    minlength="8" 
+                    maxlength="20" 
+                    type="text" class="form-control" name="confirmPassword" ngModel #confirmPassword="ngModel">
+                    <div *ngIf="confirmPassword.touched && !passwordConfirmation()" class="alert alert-danger">                        
+                        <p>Password in both the fields should match!</p>                        
+                    </div>                    
+                </div>
+                <div class="mb-3">
+                    <label for="emailId" class="form-label">Email Id</label>
+                    <input [(ngModel)]="emailIdV" 
+                    required 
+                    type="email" 
+                    class="form-control" 
+                    name="emailId" aria-describedby="emailId" ngModel #emailId="ngModel">
+                    <div *ngIf="emailId.touched && emailId.invalid" class="alert alert-danger">
+                        <p *ngIf="emailId.errors['required']">Email Id is required!</p>                                                
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <input [(ngModel)]="phoneNumberV" 
+                    required 
+                    type="text" 
+                    class="form-control" 
+                    name="phoneNumber" aria-describedby="phoneNumber" ngModel #phoneNumber="ngModel">
+                    <div *ngIf="phoneNumber.touched && phoneNumber.invalid" class="alert alert-danger">
+                        <p *ngIf="phoneNumber.errors['required']">Phone Number is required!</p>                                                
+                    </div>                  
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input [(ngModel)]="address" 
+                    type="text" class="form-control" name="address" aria-describedby="address">                  
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input [(ngModel)]="location" 
+                    type="text" class="form-control" name="location" aria-describedby="location">                  
+                </div>                                                                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 300px;"></div>
+    </div>
+    <div class="mx-auto" style="height: 90px;"></div>
+    
+</div>
+
+
