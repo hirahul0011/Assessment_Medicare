@@ -40,4 +40,14 @@ export class ProductService {
     return this.http.get<Product[]>(`${baseUrl}?productcategoryid=${productcategoryid}`);
   }
 
+
+
+  // public uploadImage(image: File): Observable<Response> {
+  //   const formData = new FormData();
+
+  //   formData.append('image', image);
+
+  //   return this.http.post('/api/v1/image-upload', formData);
+  // }
+
 }

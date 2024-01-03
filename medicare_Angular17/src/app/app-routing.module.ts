@@ -8,6 +8,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { AdminLogoutComponent } from './components/admin-logout/admin-logout.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,7 +26,8 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductDetailsComponent },
   {path:'admin',component:AdminDashboardComponent},
   {path:'registeredUser',component:UserDashboardComponent},
-
+  {path:'adminLogout',component:AdminLogoutComponent},
+  {path:'editProduct/:id',component:EditProductComponent},
 ];
 
 @NgModule({

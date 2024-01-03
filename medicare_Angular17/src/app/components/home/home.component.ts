@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Product } from '../../models/product.model';
 import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -20,10 +21,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private productService:ProductService,
     private categoryService:CategoryService,
-    public sanitizer: DomSanitizer){}
+    public sanitizer: DomSanitizer,
+    private router:Router){}
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+
+    // this.router.navigate(['home']);   
 
     this.productService.getAll().subscribe({
       next:(data)=>{

@@ -1,0 +1,156 @@
+<!-- <p>edit-product works!</p> -->
+
+<div class="container">
+
+    <div class="mx-auto" style="height: 50px;"></div>
+    <div class="row">
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 300px;"></div>
+        <div class="col">
+            <div *ngIf="submitted" class="alert alert-success">
+                <p>Registration is successful!
+                    <br>Please login to proceed!
+                </p>                
+            </div>            
+            <!-- <form #userForm="ngForm" (ngSubmit)="submit(userForm)">                                -->
+            <form #userForm="ngForm" (ngSubmit)="submit(userForm)">                               
+                <div class="mb-3">
+                    <label for="productId" class="form-label">Product Id</label>
+                    <input [(ngModel)]="productIdV"                      
+                    type="text" 
+                    class="form-control" 
+                    name="productId" aria-describedby="productId" ngModel #productId="ngModel"
+                    value="{{product.product_id}}" placeholder="{{product.product_id}}" 
+                    disabled>                  
+                    <!-- <div *ngIf="productId.touched && productId.invalid" class="alert alert-danger">                            
+                        <p *ngIf="productId.errors['required']">User Name is required!</p>
+                        <p *ngIf="productId.errors['minlength']">User Name must be atleast 8 characters long!</p>
+                        <p *ngIf="productId.errors['maxlength']">User Name can be atmax 20 characters long!</p>                        
+                    </div>
+                    <div *ngIf="productId.touched && productId.valid && !productIdAvailability()" class="alert alert-danger">
+                        <p>User Name {{productIdV}} is not available!</p>                        
+                    </div>
+                    <div *ngIf="productId.touched && productId.valid && productIdAvailability()" class="alert alert-success">
+                        <p>User Name {{productIdV}} is available!</p>                        
+                    </div> -->
+
+                    <!-- <label for="name">Name</label>
+                        <input required minlength="8" maxlength="20" pattern="John Doe" type="text" name="userName" class="form-control" ngModel #userName="ngModel">
+                        <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">                            
+                            <p *ngIf="userName.errors['required']">Name is required!</p>
+                            <p *ngIf="userName.errors['minlength']">Name must be atleast 8 characters long!</p>
+                            <p *ngIf="userName.errors['maxlength']">Name can be atmax 20 characters long!</p>
+                            <p *ngIf="userName.errors['pattern']">Name must only be John Doe!</p>
+                    </div> -->
+
+                </div>
+                <div class="mb-3">                    
+                    <label for="productCategoryId" class="form-label">Product Category Id</label>
+                    <input [(ngModel)]="productCategoryIdV"                     
+                    type="productCategoryId" class="form-control" name="productCategoryId" 
+                    ngModel #productCategoryId="ngModel"
+                    value="{{product.productcategoryid}}" placeholder="{{product.productcategoryid}}"
+                    disabled>
+                    <!-- <div *ngIf="productCategoryId.touched && productCategoryId.invalid" class="alert alert-danger">
+                        <p *ngIf="productCategoryId.errors['required']">productCategoryId is required!</p>                        
+                        <p *ngIf="productCategoryId.errors['minlength']">productCategoryId must be atleast 8 characters long!</p>
+                        <p *ngIf="productCategoryId.errors['maxlength']">productCategoryId can be atmax 20 characters long!</p>
+                    </div> -->
+                </div>                
+                <div class="mb-3">
+                    <label for="productName" class="form-label">Product Name</label>
+                    <input [(ngModel)]="productNameV" 
+                    required 
+                    minlength="8" 
+                    maxlength="20"
+                    type="email" 
+                    class="form-control" 
+                    name="productName" aria-describedby="productName" ngModel #productName="ngModel"
+                    value="{{product.product_name}}" placeholder="{{product.product_name}}">
+                    <div *ngIf="productName.touched && productName.invalid" class="alert alert-danger">
+                        <p *ngIf="productName.errors['required']">Product Name is required!</p>
+                        <p *ngIf="productName.errors['minlength']">Product Name must be atleast 8 characters long!</p>
+                        <p *ngIf="productName.errors['maxlength']">Product Name can be atmax 20 characters long!</p>            
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="productBrand" class="form-label">Product Brand</label>
+                    <input [(ngModel)]="productBrandV" 
+                    required 
+                    minlength="8" 
+                    maxlength="20"
+                    type="text" 
+                    class="form-control" 
+                    name="productBrand" aria-describedby="productBrand" ngModel #productBrand="ngModel"
+                    value="{{product.product_brand}}" placeholder="{{product.product_brand}}">
+                    <div *ngIf="productBrand.touched && productBrand.invalid" class="alert alert-danger">
+                        <p *ngIf="productBrand.errors['required']">Product Brand is required!</p>
+                        <p *ngIf="productBrand.errors['minlength']">Product Brand must be atleast 8 characters long!</p>
+                        <p *ngIf="productBrand.errors['maxlength']">Product Brand can be atmax 20 characters long!</p>                            
+                    </div>                  
+                </div>
+                <div class="mb-3">
+                    <label for="productImage" class="form-label">Product Image</label>
+                    <img width="100%" [src]="domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImageOrg.product_product_image)">
+                    <br>
+                    <div class="mb-3">
+
+                        <label for="productImage" class="form-label">Change Product Image</label>
+                        <app-file-upload-component [productImageId]="product.product_id"></app-file-upload-component>
+
+                        <!-- <label for="productImage" class="form-label">Change Product Image</label>
+                        <div class="text-center"> 
+                            <input class="form-control" type="file" 
+                                    (change)="handleUpload($event)"> 
+                        </div>                          -->
+
+                        <!-- <label for="productImage" class="form-label">Change Product Image</label>
+                        <input [(ngModel)]="productImage" 
+                        type="text" class="form-control" name="productImage" aria-describedby="productImage"
+                        value="{{product.product_product_image}}" placeholder="{{product.product_product_image}}">                   -->
+                    </div>                    
+                </div>
+                <div class="mb-3">
+                    <label for="productQuantity" class="form-label">Product Quantity</label>
+                    <input [(ngModel)]="productQuantityV" 
+                    required
+                    type="text" class="form-control" name="productQuantity" aria-describedby="productQuantity"
+                    value="{{product.product_quantity}}" placeholder="{{product.product_quantity}}"
+                    ngModel #productQuantity="ngModel">
+                    <div *ngIf="productQuantity.invalid" class="alert alert-normal">
+                        <p *ngIf="productQuantity.errors['required']">Product Quantity should not be blank!</p>               
+                    </div>     
+                </div>
+                <div class="mb-3">
+                    <label for="productPrice" class="form-label">Product Price</label>
+                    <input [(ngModel)]="productPriceV"
+                    required 
+                    type="text" class="form-control" name="productPrice" aria-describedby="productPrice"
+                    value="{{product.product_price}}" placeholder="{{product.product_price}}"
+                    ngModel #productPrice="ngModel">
+                    <div *ngIf="productPrice.invalid" class="alert alert-normal">
+                        <p *ngIf="productPrice.errors['required']">Product Price should not be blank!</p>            
+                    </div>      
+                </div>
+                <div class="mb-3">
+                    <label for="productStatus" class="form-label">Product Status</label>
+                    <select class="form-select" aria-label="Default select example"
+                    [(ngModel)]="productStatus" 
+                    class="form-control" name="productStatus" 
+                    aria-describedby="productStatus">
+                        <option selected value="{{product.product_status}}">{{product.product_status}}</option>
+                        <option value="{{!product.product_status}}">{{!product.product_status}}</option>                        
+                    </select>
+                    <!-- <input [(ngModel)]="productStatus" 
+                    type="text" class="form-control" name="productStatus" aria-describedby="productStatus"
+                    value="{{product.product_status}}" placeholder="{{product.product_status}}">                   -->
+                </div>                                                                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 300px;"></div>
+    </div>
+    <div class="mx-auto" style="height: 90px;"></div>
+    
+</div>

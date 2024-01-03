@@ -15,6 +15,10 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { AdminLogoutComponent } from './components/admin-logout/admin-logout.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import {DataTablesModule} from 'angular-datatables';
+import { FileUploadComponentComponent } from './components/file-upload-component/file-upload-component.component';
 
 @NgModule({
   declarations: [
@@ -28,14 +32,18 @@ import { UserDashboardComponent } from './components/user-dashboard/user-dashboa
     RegisterComponent,
     ProductDetailsComponent,
     AdminDashboardComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    AdminLogoutComponent,
+    EditProductComponent,
+    FileUploadComponentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

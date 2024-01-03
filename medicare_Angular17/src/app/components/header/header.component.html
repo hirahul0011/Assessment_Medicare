@@ -1,6 +1,92 @@
 <!-- <p>header works!</p> -->
 
-<div>
+<!-- ============================== Admin ================================== -->
+<div *ngIf="isAdmin">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="admin">Medicare</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="admin">Admin Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="adminLogout">Logout</a>
+          </li>          
+
+          <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+              <svg class="bi me-2" width="500" height="32"><use xlink:href="#bootstrap"></use></svg>
+          </a>   
+
+          <li class="nav-item">
+              <a class="nav-link" routerLink="login">Add Category</a>
+          </li>        
+          <li class="nav-item">
+              <a class="nav-link" routerLink="register">Add Product</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" routerLink="register">View All Products</a>
+        </li> 
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+<!-- ============================== Admin End ================================== -->
+
+
+<!-- ============================== Registered User ================================== -->
+<div *ngIf="isRegisteredUser">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Medicare User Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="contact">Contact</a>
+          </li>
+
+          <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+              <svg class="bi me-2" width="500" height="32"><use xlink:href="#bootstrap"></use></svg>
+          </a>   
+
+          <li class="nav-item">
+              <a class="nav-link" routerLink="login">Login</a>
+          </li>        
+          <li class="nav-item">
+              <a class="nav-link" routerLink="register">Register</a>
+          </li> 
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+<!-- ============================== Registered User End ================================== -->
+
+<!-- ============================== Default ================================== -->
+<div *ngIf="!isRegisteredUser && !isAdmin">
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Medicare</a>
@@ -20,7 +106,7 @@
             </li>
 
             <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <svg class="bi me-2" width="800" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <svg class="bi me-2" width="500" height="32"><use xlink:href="#bootstrap"></use></svg>
             </a>   
 
             <li class="nav-item">
@@ -39,3 +125,4 @@
     </div>
 
 </div>
+<!-- ============================== Default End ================================== -->
