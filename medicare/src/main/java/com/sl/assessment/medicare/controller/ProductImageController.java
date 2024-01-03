@@ -155,5 +155,22 @@ public class ProductImageController {
 	    return productImageRepository.findById(id).get();
 	  }
 	  
+	  @DeleteMapping("/productImages/delete/{id}")
+	  public void deleteProduct(@PathVariable("id") long id) {
+		  productImageRepository.deleteById(id);		  
+	  }
+
+	  @DeleteMapping("/productImages/delete")
+	  public void deleteAllProducts() {
+		  productImageRepository.deleteAll();
+	    
+	  }
+	  
+	  @PostMapping("/productImages/create")
+	  public void createProduct(@RequestBody ProductImage product) {
+		  productImageRepository.save(product);
+	    
+	  }
+	  
 
 }

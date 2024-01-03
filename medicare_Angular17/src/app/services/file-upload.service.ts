@@ -46,7 +46,11 @@ export class FileUploadService {
     });
 
     return this.http.request(req);
-  }  
+  } 
+  
+  create(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/create`, data);
+  }
 
   updateFile(id: any, file: File): Observable<any> {
     const formData: FormData = new FormData();
@@ -77,6 +81,14 @@ export class FileUploadService {
 
   getImagesDataToShow():Observable<any>{
     return this.http.get(`${this.baseUrl}`);
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/delete/${id}`);
+  }
+
+  deleteAll(): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/delete`);
   }
 
 }

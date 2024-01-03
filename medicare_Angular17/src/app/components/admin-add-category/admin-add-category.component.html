@@ -23,7 +23,7 @@
                     <p *ngIf="categoryAdded.errors['minlength']">Category must be atleast 8 characters long!</p>
                     <p *ngIf="categoryAdded.errors['maxlength']">Category can be atmax 20 characters long!</p>                        
                 </div>
-                </div>                
+                </div>  
                 <button type="submit" class="btn btn-primary">Add</button>
                 <br><br>
                 <button *ngIf="isSubmitted" type="button" class="btn btn-success" disabled=true>{{successMessage}}</button>                

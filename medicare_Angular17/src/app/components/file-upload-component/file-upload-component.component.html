@@ -32,8 +32,13 @@
       </label>
     </div>
   
-    <div class="col-4">
+    <div class="col-4" *ngIf="productImageId!=undefined">
       <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="updateFile(productImageId)">
+        Upload
+      </button>
+    </div>
+    <div class="col-4" *ngIf="productImageId==undefined">
+      <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
         Upload
       </button>
     </div>

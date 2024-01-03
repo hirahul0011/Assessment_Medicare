@@ -59,6 +59,8 @@ export class FileUploadComponentComponent implements OnInit {
 
   fileInfos?: Observable<any>;
 
+  submitted:boolean;
+
   constructor(private uploadService: FileUploadService) { }
 
   ngOnInit(): void {
@@ -66,6 +68,22 @@ export class FileUploadComponentComponent implements OnInit {
     console.log(this.productImageId)
     
     this.fileInfos = this.uploadService.getFiles();
+
+
+    const data={
+      product_id:this.productImageId,
+      product_product_image_name:'',
+      product_product_image_type:'',
+      product_product_image:'',
+    }
+
+    this.uploadService.create(data).subscribe({  
+      next:(response)=>{
+        console.log(response);
+        this.submitted=true;
+      },
+      error: (e) => {console.error(e)}
+    });
   }
 
   selectFile(event: any): void {
