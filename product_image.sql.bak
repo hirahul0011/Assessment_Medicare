@@ -1,0 +1,13 @@
+/*
+-- Query: SELECT * FROM medicare.product_image
+LIMIT 0, 1000
+
+-- Date: 2024-01-03 10:35
+*/
+INSERT INTO `` (`product_id`,`product_product_image`,`product_product_image_name`,`product_product_image_type`) VALUES (30001,?,'lotus 1670598623881.jpeg','image/jpeg');
+INSERT INTO `` (`product_id`,`product_product_image`,`product_product_image_name`,`product_product_image_type`) VALUES (30002,?,'Image2','JPG');
+INSERT INTO `` (`product_id`,`product_product_image`,`product_product_image_name`,`product_product_image_type`) VALUES (30003,?,'Image3','JPG');
+INSERT INTO `` (`product_id`,`product_product_image`,`product_product_image_name`,`product_product_image_type`) VALUES (30004,?,'Image4','JPG');
+INSERT INTO `` (`product_id`,`product_product_image`,`product_product_image_name`,`product_product_image_type`) VALUES (30005,?,'Image5','JPG');
+INSERT INTO `` (`product_id`,`product_product_image`,`product_product_image_name`,`product_product_image_type`) VALUES (30006,?,'Lotus.PNG','image/png');
+INSERT INTO `` (`product_id`,`product_product_image`,`product_product_image_name`,`product_product_image_type`) VALUES (30007,?,'Lotus.PNG','image/png');
