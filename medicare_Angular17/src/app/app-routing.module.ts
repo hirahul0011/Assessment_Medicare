@@ -10,6 +10,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { AdminLogoutComponent } from './components/admin-logout/admin-logout.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { AdminAddCategoryComponent } from './components/admin-add-category/admin-add-category.component';
+import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,6 +30,8 @@ const routes: Routes = [
   {path:'registeredUser',component:UserDashboardComponent},
   {path:'adminLogout',component:AdminLogoutComponent},
   {path:'editProduct/:id',component:EditProductComponent},
+  {path:'adminAddCategory',component:AdminAddCategoryComponent},
+  {path:'adminAddProduct',component:AdminAddProductComponent},  
 ];
 
 @NgModule({

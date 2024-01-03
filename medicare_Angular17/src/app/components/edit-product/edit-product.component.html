@@ -7,12 +7,13 @@
         <!-- <div class="col-3"></div> -->
         <div class="mx-auto" style="width: 300px;"></div>
         <div class="col">
+                       
+            <!-- <form #userForm="ngForm" (ngSubmit)="submit(userForm)">                                -->
             <div *ngIf="submitted" class="alert alert-success">
-                <p>Registration is successful!
-                    <br>Please login to proceed!
+                <p>
+                    <br>Data changed successfully!
                 </p>                
             </div>            
-            <!-- <form #userForm="ngForm" (ngSubmit)="submit(userForm)">                                -->
             <form #userForm="ngForm" (ngSubmit)="submit(userForm)">                               
                 <div class="mb-3">
                     <label for="productId" class="form-label">Product Id</label>
@@ -147,6 +148,11 @@
                 </div>                                                                
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <div *ngIf="submitted" class="alert alert-success">
+                <p>
+                    <br>Data changed successfully!
+                </p>                
+            </div>
         </div>
         <!-- <div class="col-3"></div> -->
         <div class="mx-auto" style="width: 300px;"></div>

@@ -91,17 +91,17 @@ export class EditProductComponent implements OnInit {
   // }
 
   submit(userForm:any){
-    this.product.product_id=this.productIdV
-    this.product.productcategoryid=this.productCategoryIdV
-    this.product.product_name=this.productNameV
-    this.product.product_brand=this.productBrandV
-    this.product.product_product_image=this.productImage
-    this.product.product_price=this.productPriceV
-    this.product.product_quantity=this.productQuantityV
-    this.product.product_status=this.productStatus
+    // this.product.product_id=this.productIdV
+    // this.product.productcategoryid=this.productCategoryIdV
+    // this.product.product_name=this.productNameV
+    // this.product.product_brand=this.productBrandV
+    // this.product.product_product_image=this.productImage
+    // this.product.product_price=this.productPriceV
+    // this.product.product_quantity=this.productQuantityV
+    // this.product.product_status=this.productStatus
 
-    console.log(userForm);
-    console.log(this.product);
+    // console.log(userForm);
+    // console.log(this.product);
 
     this.productService.get(this.productId).subscribe({
       next:(data)=>{
@@ -121,6 +121,7 @@ export class EditProductComponent implements OnInit {
         this.productService.update(this.productId,this.product)
             .subscribe(response=>{
               console.log(response)
+              this.submitted=true;
             })
 
       },

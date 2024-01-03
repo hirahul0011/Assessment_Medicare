@@ -19,6 +19,8 @@ import { AdminLogoutComponent } from './components/admin-logout/admin-logout.com
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import {DataTablesModule} from 'angular-datatables';
 import { FileUploadComponentComponent } from './components/file-upload-component/file-upload-component.component';
+import { AdminAddCategoryComponent } from './components/admin-add-category/admin-add-category.component';
+import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { FileUploadComponentComponent } from './components/file-upload-component
     UserDashboardComponent,
     AdminLogoutComponent,
     EditProductComponent,
-    FileUploadComponentComponent
+    FileUploadComponentComponent,
+    AdminAddCategoryComponent,
+    AdminAddProductComponent
   ],
   imports: [
     BrowserModule,

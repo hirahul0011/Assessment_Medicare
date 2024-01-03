@@ -1,0 +1,45 @@
+<!-- <p>admin-add-category works!</p> -->
+
+<h3>Add Category</h3>
+
+<div class="container">
+
+    <div class="mx-auto" style="height: 50px;"></div>
+    <div class="row">
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 100px;"></div>
+        <div class="col">
+            <form #userForm="ngForm" (ngSubmit)="submit(userForm)">
+                <div class="mb-3">
+                  <label for="categoryAdded" class="form-label">Category</label>
+                  <input [(ngModel)]="categoryAddedV" 
+                        required 
+                        minlength="8"
+                        maxlength="20"
+                        type="text" class="form-control" name="categoryAdded" aria-describedby="categoryAdded"
+                        ngModel #categoryAdded="ngModel">                  
+                  <div *ngIf="categoryAdded.touched && categoryAdded.invalid" class="alert alert-danger">                            
+                    <p *ngIf="categoryAdded.errors['required']">Category is required!</p>
+                    <p *ngIf="categoryAdded.errors['minlength']">Category must be atleast 8 characters long!</p>
+                    <p *ngIf="categoryAdded.errors['maxlength']">Category can be atmax 20 characters long!</p>                        
+                </div>
+                </div>                
+                <button type="submit" class="btn btn-primary">Add</button>
+                <br><br>
+                <button *ngIf="isSubmitted" type="button" class="btn btn-success" disabled=true>{{successMessage}}</button>                
+                <button *ngIf="isSubmitted && categoryAdded==undefined" type="button" class="btn btn-danger" disabled=true>{{errorMessage}}</button>                
+                <br>
+            </form>        
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 300px;"></div>
+        </div>
+
+        <div class="col-5">
+            <ul class="list-group"
+            *ngFor="let category of categories; let i = index">
+                <li class="list-group-item">{{category.category_name}}</li>
+            </ul>          
+        </div>
+    </div>
+    <div class="mx-auto" style="height: 350px;"></div>
+</div>
