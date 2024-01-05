@@ -4,7 +4,7 @@ export class Product {
     product_brand?: string
     product_price?: number
     product_quantity?: number
-    product_product_image?: string
+    product_image_id?: number
     productcategoryid?: number
     product_status?: boolean
 }

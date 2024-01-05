@@ -5,6 +5,8 @@ import { Product } from '../../models/product.model';
 import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
 import { Router } from '@angular/router';
+import { FileUploadService } from '../../services/file-upload.service';
+import { ProductImage } from '../../models/product-image.model';
 
 @Component({
   selector: 'app-home',
@@ -19,8 +21,11 @@ export class HomeComponent implements OnInit {
   categories?:Category[];
   productsByCategoryId?:Product[];
 
+  productImagesOrg:ProductImage[];
+
   constructor(private productService:ProductService,
     private categoryService:CategoryService,
+    private uploadService:FileUploadService,
     public sanitizer: DomSanitizer,
     private router:Router){}
 
@@ -44,6 +49,16 @@ export class HomeComponent implements OnInit {
       },
       error:(e)=>{console.error(e)}
     });
+
+    this.uploadService.getImagesDataToShow().subscribe({
+      next:(data)=>{
+        this.productImagesOrg=data;       
+        console.log(data);
+        console.log(this.productImagesOrg);
+      },
+      error:(e)=>{console.error(e)}
+    });
+
   }
 
   clickManage(categoryId:any){

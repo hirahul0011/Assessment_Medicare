@@ -58,7 +58,7 @@ public class ProductController {
 	    s.setProduct_brand(product.getProduct_brand());
 	    s.setProduct_price(product.getProduct_price());
 	    s.setProduct_quantity(product.getProduct_quantity());
-	    s.setProduct_product_image(product.getProduct_product_image());
+	    s.setProduct_image_id(product.getProduct_image_id());
 	    s.setProductcategoryid(product.getProductcategoryid());
 	    s.setProduct_status(product.isProduct_status());
 	    productRepository.save(s);

@@ -28,7 +28,9 @@
                     <tr *ngFor="let product of products; let i = index">
                         <th scope="row">{{product.product_id}}</th>
                         <td>
-                            <img width="200%" [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImagesOrg[i].product_product_image)">
+                            <!-- <img width="200%" [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImagesOrg[i].product_product_image)"> -->
+                            <img *ngIf="productImagesOrg[i].product_image_id==product.product_image_id"
+                            width="100%" [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImagesOrg[i].product_product_image)">
                         </td>
                         <td>{{product.product_name}}</td>
                         <td>{{product.product_brand}}</td>

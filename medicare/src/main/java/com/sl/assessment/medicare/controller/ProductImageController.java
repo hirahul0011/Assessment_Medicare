@@ -74,7 +74,7 @@ public class ProductImageController {
 	  public void updateFile(@PathVariable("id") int id, 
 			  @RequestParam("file") MultipartFile file) throws IOException {
 		ProductImage s=getImage(id);
-	    s.setProduct_id(id);	    
+	    s.setProduct_image_id(id);	    
 	    s.setProduct_product_image(file.getBytes());
 	    s.setProduct_product_image_name(StringUtils.cleanPath(file.getOriginalFilename()));
 	    s.setProduct_product_image_type(file.getContentType());
@@ -87,7 +87,7 @@ public class ProductImageController {
 	      String fileDownloadUri = ServletUriComponentsBuilder
 	          .fromCurrentContextPath()
 	          .path("/files/")
-	          .path(String.valueOf(dbFile.getProduct_id()))
+	          .path(String.valueOf(dbFile.getProduct_image_id()))
 	          .toUriString();
 
 	      return new ResponseFile(

@@ -17,7 +17,7 @@ public class ProductImage {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 //	GenerationType Identity is better than Auto as it generate the unique ID 
 //	as per existing sequence
-	private int product_id;	
+	private int product_image_id;	
 	@Lob
 	private byte[] product_product_image;
 	
@@ -36,13 +36,14 @@ public class ProductImage {
 	public ProductImage() {
 		super();
 		// TODO Auto-generated constructor stub
+	}	
+
+	public int getProduct_image_id() {
+		return product_image_id;
 	}
 
-	public int getProduct_id() {
-		return product_id;
-	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setProduct_image_id(int product_image_id) {
+		this.product_image_id = product_image_id;
 	}
 
 	public byte[] getProduct_product_image() {
@@ -50,8 +51,7 @@ public class ProductImage {
 	}
 	public void setProduct_product_image(byte[] product_product_image) {
 		this.product_product_image = product_product_image;
-	}
-	
+	}	
 	
 	public String getProduct_product_image_name() {
 		return product_product_image_name;

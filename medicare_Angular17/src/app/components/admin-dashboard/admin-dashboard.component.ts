@@ -22,6 +22,7 @@ export class AdminDashboardComponent implements OnInit {
   productId!:number;
 
   productImagesOrg:ProductImage[];
+  productImages:string[];
 
   constructor(private productService:ProductService,
     public sanitizer: DomSanitizer,
@@ -62,12 +63,29 @@ export class AdminDashboardComponent implements OnInit {
         this.productImagesOrg=data;       
         console.log(data);
         console.log(this.productImagesOrg);
+
+        // for(let i=0;i<this.productImagesOrg.length;i++){
+        //   this.productImages.push(this.productImagesOrg[i].product_product_image);
+        // }  
+        
+        // console.log(this.productImages);
+
       },
       error:(e)=>{console.error(e)}
     });
 
+    
+
     // this.product.product_status?.valueOf
 
+  }
+
+  fetchProductImage(product_image_id: number):any{
+    for(let i=0;i<this.productImagesOrg.length;i++){
+      if(this.productImagesOrg[i].product_image_id=product_image_id){
+        return this.productImages[i];
+      }
+    }
   }
 
   changeActivationStatus(productId:number){

@@ -24,7 +24,7 @@ export class EditProductComponent implements OnInit {
   productCategoryIdV:number;
   productNameV:string;
   productBrandV:string;
-  productImage:string;
+  productImageId:number;
   productQuantityV:number;
   productPriceV:number;
   productStatus:boolean;
@@ -52,21 +52,33 @@ export class EditProductComponent implements OnInit {
 
     this.productService.get(this.productId).subscribe({
       next:(data)=>{
-        this.product=data;       
+        this.product=data; 
+        this.productImageId=this.product.product_image_id;      
         console.log(data);
         console.log(this.product);
+        console.log(this.product.product_image_id);
+
+        this.uploadService.getImageDataToShow(this.productImageId).subscribe({
+          next:(data)=>{
+            this.productImageOrg=data;       
+            // console.log(data);
+            // console.log(this.productImageOrg.product_product_image);
+          },
+          error:(e)=>{console.error(e)}
+        });
+
       },
       error:(e)=>{console.error(e)}
     });
 
-    this.uploadService.getImageDataToShow(this.productId).subscribe({
-      next:(data)=>{
-        this.productImageOrg=data;       
-        console.log(data);
-        console.log(this.productImageOrg);
-      },
-      error:(e)=>{console.error(e)}
-    });
+    // this.uploadService.getImageDataToShow(this.productImageId).subscribe({
+    //   next:(data)=>{
+    //     this.productImageOrg=data;       
+    //     console.log(data);
+    //     console.log(this.productImageOrg.product_product_image);
+    //   },
+    //   error:(e)=>{console.error(e)}
+    // });
 
     // this.product.product_status
 
@@ -111,7 +123,7 @@ export class EditProductComponent implements OnInit {
         if(this.productCategoryIdV!=undefined){this.product.productcategoryid=this.productCategoryIdV}
         if(this.productNameV!=undefined){this.product.product_name=this.productNameV}
         if(this.productBrandV!=undefined){this.product.product_brand=this.productBrandV}
-        if(this.productImage!=undefined){this.product.product_product_image=this.productImage}
+        if(this.productImageId!=undefined){this.product.product_image_id=this.productImageId}
         if(this.productPriceV!=undefined){this.product.product_price=this.productPriceV}
         if(this.productQuantityV!=undefined){this.product.product_quantity=this.productQuantityV}
         if(this.productStatus!=undefined){this.product.product_status=this.productStatus}

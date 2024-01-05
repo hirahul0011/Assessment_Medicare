@@ -92,12 +92,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="productImage" class="form-label">Product Image</label>
-                    <img width="100%" [src]="domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImageOrg.product_product_image)">
+                    <img width="100%" [src]="domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + productImageOrg.product_product_image)">
                     <br>
                     <div class="mb-3">
 
                         <label for="productImage" class="form-label">Change Product Image</label>
-                        <app-file-upload-component [productImageId]="product.product_id"></app-file-upload-component>
+                        <app-file-upload-component [productImageId]="product.product_image_id"></app-file-upload-component>
 
                         <!-- <label for="productImage" class="form-label">Change Product Image</label>
                         <div class="text-center"> 

@@ -23,7 +23,7 @@ export class AdminAddProductComponent implements OnInit {
   productCategoryIdV!:number;
   productNameV!:string;
   productBrandV!:string;
-  productImage!:string;
+  // productImage!:string;
   productQuantityV!:number;
   productPriceV!:number;
   productStatus!:boolean;
@@ -34,6 +34,7 @@ export class AdminAddProductComponent implements OnInit {
   category!:Category;
 
   productImageId:number;
+  errorMessage:string;
 
   submitted!:boolean;
 
@@ -72,7 +73,7 @@ export class AdminAddProductComponent implements OnInit {
         // while(this.products.length!=this.productImagesOrg.length){
         if(this.products.length!=this.productImagesOrg.length){
           if(this.products.length<this.productImagesOrg.length){
-            this.uploadService.delete(this.productImagesOrg[this.productImagesOrg.length-1].product_id)
+            this.uploadService.delete(this.productImagesOrg[this.productImagesOrg.length-1].product_image_id)
                 .subscribe(response=>{
                   console.log(response)              
                 })
@@ -105,6 +106,8 @@ export class AdminAddProductComponent implements OnInit {
 
     // this.category.category_name
 
+    console.log(this.errorMessage);
+
   }
 
   // handleUpload(event:any) {
@@ -117,7 +120,55 @@ export class AdminAddProductComponent implements OnInit {
   //   };
   // }
 
-  submit(userForm:any){
+  submit(userForm:any){    
+
+    this.errorMessage=undefined;
+    console.log(this.errorMessage);
+
+    this.uploadService.getImagesDataToShow().subscribe({
+      next:(data)=>{
+        this.productImagesOrg=data;               
+        
+        if(this.products.length!=this.productImagesOrg.length){
+          if(this.products.length<this.productImagesOrg.length){
+            this.productImageId=this.productImagesOrg[this.productImagesOrg.length-1].product_image_id;                
+
+            const data={
+              productcategoryid:this.productCategoryIdV,
+              product_name:this.productNameV,
+              product_brand:this.productBrandV,
+              product_image_id:this.productImageId,
+              product_price:this.productPriceV,
+              product_quantity:this.productQuantityV,
+              product_status:this.productStatus,
+            }
+        
+              console.log(data);
+        
+              this.productService.create(data).subscribe({  
+                next:(response)=>{
+                  console.log(response);
+                  this.submitted=true;
+                },
+                error: (e) => {console.error(e)}
+              });
+
+          }
+          else{
+            this.errorMessage="Please add the product image before addition of product in database";
+            // this.router.navigate(['adminAddProduct']);
+            // return;
+          }
+        }
+        else{
+          this.errorMessage="Please add the product image before addition of product in database";
+          // this.router.navigate(['adminAddProduct']);          
+          // return;
+        }
+
+      },
+      error:(e)=>{console.error(e)}
+    });
     
     // if(this.productCategoryIdV!=undefined){this.product.productcategoryid=this.productCategoryIdV}
     // if(this.productNameV!=undefined){this.product.product_name=this.productNameV}
@@ -127,25 +178,30 @@ export class AdminAddProductComponent implements OnInit {
     // if(this.productQuantityV!=undefined){this.product.product_quantity=this.productQuantityV}
     // if(this.productStatus!=undefined){this.product.product_status=this.productStatus}
 
-    const data={
-      productcategoryid:this.productCategoryIdV,
-      product_name:this.productNameV,
-      product_brand:this.productBrandV,
-      product_product_image:this.productImage,
-      product_price:this.productPriceV,
-      product_quantity:this.productQuantityV,
-      product_status:this.productStatus,
-    }
+    // if(this.errorMessage==undefined){
+      
+      // const data={
+      //   productcategoryid:this.productCategoryIdV,
+      //   product_name:this.productNameV,
+      //   product_brand:this.productBrandV,
+      //   product_image_id:this.productImageId,
+      //   product_price:this.productPriceV,
+      //   product_quantity:this.productQuantityV,
+      //   product_status:this.productStatus,
+      // }
+  
+      //   console.log(data);
+  
+      //   this.productService.create(data).subscribe({  
+      //     next:(response)=>{
+      //       console.log(response);
+      //       this.submitted=true;
+      //     },
+      //     error: (e) => {console.error(e)}
+      //   });
 
-      console.log(data);
-
-      this.productService.create(data).subscribe({  
-        next:(response)=>{
-          console.log(response);
-          this.submitted=true;
-        },
-        error: (e) => {console.error(e)}
-      });
+    // }
+    
 
       // this.productService.create(this.productId,this.product)
       //     .subscribe(response=>{
