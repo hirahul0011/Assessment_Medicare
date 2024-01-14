@@ -101,7 +101,7 @@ export class PaymentComponent {
       next:(data)=>{
         this.registeredUsers=data;
         for(let i=0;i<this.registeredUsers.length;i++){
-          if(this.registeredUsers[i].registered_user_name=this.registeredUserName){
+          if(this.registeredUsers[i].registered_user_name==this.registeredUserName){
             this.registeredUserId=this.registeredUsers[i].registered_user_id;
             break;
           }

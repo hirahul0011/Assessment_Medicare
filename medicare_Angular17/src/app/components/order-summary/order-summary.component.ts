@@ -62,7 +62,7 @@ export class OrderSummaryComponent implements OnInit {
       next:(data)=>{
         this.registeredUsers=data;
         for(let i=0;i<this.registeredUsers.length;i++){
-          if(this.registeredUsers[i].registered_user_name=this.registeredUserName){
+          if(this.registeredUsers[i].registered_user_name==this.registeredUserName){
             this.registeredUserId=this.registeredUsers[i].registered_user_id;
             break;
           }
@@ -71,6 +71,8 @@ export class OrderSummaryComponent implements OnInit {
       },
       error:(e)=>{console.error(e)}
     });
+
+    // this.ordersAdded=false;
 
     this.paymentService.getAll().subscribe({
       next:(data)=>{
@@ -122,7 +124,51 @@ export class OrderSummaryComponent implements OnInit {
                   
                 
                   }
+                  this.ordersAdded=true;
+
+                  this.cartService.findByCartproductregisteredusername(this.registeredUserName).subscribe({
+                    next:(data)=>{
+                      this.cartItems=data;                
+                      console.log(data);
+              
+                      for(let i=0;i<this.cartItems.length;i++){
+                        
+                        this.cartService.delete(this.cartItems[i].cart_id).subscribe({  
+                          next:(response)=>{
+                            console.log(response);              
+                          },
+                          error: (e) => {console.error(e)}
+                        });
+              
+                      }
+                    },
+                    error:(e)=>{console.error(e)}
+                  }); 
+
                 }
+                // else{
+
+                //   this.cartService.findByCartproductregisteredusername(this.registeredUserName).subscribe({
+                //     next:(data)=>{
+                //       this.cartItems=data;                
+                //       console.log(data);
+              
+                //       for(let i=0;i<this.cartItems.length;i++){
+                        
+                //         this.cartService.delete(this.cartItems[i].cart_id).subscribe({  
+                //           next:(response)=>{
+                //             console.log(response);              
+                //           },
+                //           error: (e) => {console.error(e)}
+                //         });
+              
+                //       }
+                //     },
+                //     error:(e)=>{console.error(e)}
+                //   }); 
+
+                  
+                // }
                               
 
                   this.orderIds="";
@@ -172,24 +218,29 @@ export class OrderSummaryComponent implements OnInit {
 
     
 
-    this.cartService.findByCartproductregisteredusername(this.registeredUserName).subscribe({
-      next:(data)=>{
-        this.cartItems=data;                
-        console.log(data);
+    // if(this.ordersAdded==true){
 
-        for(let i=0;i<this.cartItems.length;i++){
-          
-          this.cartService.delete(this.cartItems[i].cart_id).subscribe({  
-            next:(response)=>{
-              console.log(response);              
-            },
-            error: (e) => {console.error(e)}
-          });
+    //   this.cartService.findByCartproductregisteredusername(this.registeredUserName).subscribe({
+    //     next:(data)=>{
+    //       this.cartItems=data;                
+    //       console.log(data);
+  
+    //       for(let i=0;i<this.cartItems.length;i++){
+            
+    //         this.cartService.delete(this.cartItems[i].cart_id).subscribe({  
+    //           next:(response)=>{
+    //             console.log(response);              
+    //           },
+    //           error: (e) => {console.error(e)}
+    //         });
+  
+    //       }
+    //     },
+    //     error:(e)=>{console.error(e)}
+    //   }); 
 
-        }
-      },
-      error:(e)=>{console.error(e)}
-    }); 
+    // }
+    
 
 
     // this.paymentService.getAll().subscribe({

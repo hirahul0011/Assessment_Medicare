@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 export class RedirectComponent implements OnInit {
 
   // orderIds:string;
-  fromRedirect:string;
+  // fromRedirect:string;
 
   constructor(private router:Router){}
 
@@ -17,9 +17,9 @@ export class RedirectComponent implements OnInit {
     // throw new Error('Method not implemented.');
     // this.orderIds=sessionStorage.getItem("orderIds");
     // sessionStorage.setItem("orderIds",this.orderIds);    
-    this.fromRedirect="true";
-    sessionStorage.setItem("fromRedirect",this.fromRedirect);    
-    this.router.navigate(['orderSummary']);
+    // this.fromRedirect="true";
+    // sessionStorage.setItem("fromRedirect",this.fromRedirect);    
+    this.router.navigate(['home']);
   }
 
 }

@@ -23,8 +23,8 @@ export class AdminLogoutComponent implements OnInit {
     
     // window.location.reload();    
 
-    this.router.navigate(['home']);  
-    this.router.navigate(['home']);    
+    this.router.navigate(['redirect']);  
+    // this.router.navigate(['home']);    
   }
 
   // @HostListener('window:unload', ['$event'])
