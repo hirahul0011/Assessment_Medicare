@@ -1,0 +1,57 @@
+<!-- <p>payment works!</p> -->
+
+<div class="container">
+
+    <div class="mx-auto" style="height: 100px;"></div>
+    <div class="row">
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 300px;"></div>
+        <div class="col">
+            <form [formGroup]="payForm" (ngSubmit)="submit()">
+                <div class="mb-3">
+                  <label for="totalAmount" class="form-label">Total Amount ($)</label>
+                  <input [(ngModel)]="totalAmount" type="number" class="form-control" name="totalAmount" 
+                  placeholder="{{totalAmount}}" value="{{totalAmount}}" disabled="true">
+                </div>
+                <div class="mb-3">
+                  <label for="cardNumber" class="form-label">Card Number</label>
+                  <input required minlength="16" maxlength="16" type="text" 
+                  class="form-control" name="cardNumber" formControlName="cardNumber">
+                  <div *ngIf="formControl['cardNumber'].touched && formControl['cardNumber'].invalid" class="alert alert-danger">
+                    <p *ngIf="formControl['cardNumber'].errors['required']">Card Number is required!</p>
+                    <p *ngIf="formControl['cardNumber'].errors['minlength']">Card Number must be 16 digits long!</p>
+                    <p *ngIf="formControl['cardNumber'].errors['pattern']">Enter only number!</p>                            
+                </div>                  
+                </div>
+                <div class="mb-3">
+                    <label for="expiryDate" class="form-label">Expiry Date</label>
+                    <input required type="date" min="today" 
+                    class="form-control" name="expiryDate" formControlName="expiryDate">
+                    <div *ngIf="formControl['expiryDate'].touched && formControl['expiryDate'].invalid" class="alert alert-danger">
+                        <p *ngIf="formControl['expiryDate'].errors['required']">Expiry Date is required!</p>
+                        <p *ngIf="formControl['expiryDate'].errors['min']">Expiry Date must be greater than today!</p>                        
+                    </div>                  
+                </div>
+                <div class="mb-3">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input required minlength="3" maxlength="3" type="text" 
+                    class="form-control" name="cvv" formControlName="cvv"
+                    >
+                    <div *ngIf="formControl['cvv'].touched && formControl['cvv'].invalid" class="alert alert-danger">
+                        <p *ngIf="formControl['cvv'].errors['required']">CVV Number is required!</p>
+                        <p *ngIf="formControl['cvv'].errors['minlength']">CVV Number must be 3 digits long!</p>
+                        <p *ngIf="formControl['cvv'].errors['pattern']">Enter only number!</p>                            
+                    </div>                  
+                </div>                
+                <button type="submit" class="btn btn-primary">Pay Amount</button>
+                <br>
+            </form>
+        </div>
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 300px;"></div>
+    </div>
+    <div class="mx-auto" style="height: 150px;"></div>
+    
+</div>
+
+

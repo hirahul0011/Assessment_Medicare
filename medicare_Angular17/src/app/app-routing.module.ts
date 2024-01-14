@@ -12,10 +12,21 @@ import { AdminLogoutComponent } from './components/admin-logout/admin-logout.com
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { AdminAddCategoryComponent } from './components/admin-add-category/admin-add-category.component';
 import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { RedirectComponent } from './components/redirect/redirect.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, 
+  // children:
+  // [
+  //   { path: ':categoryName', component: ProductsByCategoryComponent },    
+  // ]
+},
+  // { path: 'home/:categoryName', component: HomeComponent },
+  // { path: './:categoryName', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent,
@@ -27,11 +38,16 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   {path:'admin',component:AdminDashboardComponent},
-  {path:'registeredUser',component:UserDashboardComponent},
+  // {path:'registeredUser/:registeredUserName',component:UserDashboardComponent},
+  {path:'registeredUser/:registeredUserName',component:HomeComponent},
   {path:'adminLogout',component:AdminLogoutComponent},
   {path:'editProduct/:id',component:EditProductComponent},
   {path:'adminAddCategory',component:AdminAddCategoryComponent},
-  {path:'adminAddProduct',component:AdminAddProductComponent},  
+  {path:'adminAddProduct',component:AdminAddProductComponent},
+  {path:'checkout',component:CheckoutComponent}, 
+  {path:'payment',component:PaymentComponent},
+  {path:'orderSummary',component:OrderSummaryComponent},
+  {path:'redirect',component:RedirectComponent},
 ];
 
 @NgModule({

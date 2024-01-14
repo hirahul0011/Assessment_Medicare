@@ -1,0 +1,39 @@
+<!-- <p>order-summary works!</p> -->
+
+<h3>Order Summary</h3>
+
+<div class="container">
+
+    <div class="mx-auto" style="height: 50px;"></div>
+    <div class="row">
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 100px;"></div>
+        <div class="col">
+            <p>Your order has been successfully completed. Your Order Ids are :</p>
+                <!-- <p *ngFor="let orderId of orderIds"> -->
+                    <br>
+                    <div [innerHtml]="orderIds"></div>
+                    <!-- <br> {{orderIds}} <br> -->
+                    <br>
+                <!-- </p> -->
+                
+            <p>It will be delivered in next 2 working days.  
+            </p>
+
+            <button routerLink="../home" class="btn btn-primary">Home</button>            
+            
+        </div>
+
+        <!-- <div class="col-3"></div> -->
+        <div class="mx-auto" style="width: 100px;"></div>
+
+        
+        
+    </div>    
+    
+    <div class="mx-auto" style="height: 50px;"></div>
+
+</div>
+
+
+

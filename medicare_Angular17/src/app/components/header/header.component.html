@@ -47,14 +47,16 @@
 <div *ngIf="isRegisteredUser">
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Medicare User Dashboard</a>
+      <a class="navbar-brand" 
+      routerLink="registeredUser/{{registeredUserName}}">Medicare</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+            <a class="nav-link active" aria-current="page" 
+            routerLink="registeredUser/{{registeredUserName}}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="about">About</a>
@@ -62,17 +64,21 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="contact">Contact</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="adminLogout">Logout</a>
+          </li>
 
           <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
               <svg class="bi me-2" width="500" height="32"><use xlink:href="#bootstrap"></use></svg>
           </a>   
 
-          <li class="nav-item">
-              <a class="nav-link" routerLink="login">Login</a>
-          </li>        
-          <li class="nav-item">
-              <a class="nav-link" routerLink="register">Register</a>
-          </li> 
+          <div>
+            <li class="nav-item">
+              <!-- <button>Name: {{registeredUserName}}</button> -->
+              <p>Name: {{registeredUserName}}</p>
+            </li>                  
+          </div>
+
         </ul>
       </div>
     </div>

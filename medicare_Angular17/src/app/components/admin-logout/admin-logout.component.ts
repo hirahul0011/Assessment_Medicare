@@ -9,11 +9,21 @@ import { Router } from '@angular/router';
 
 export class AdminLogoutComponent implements OnInit {
 
+  registeredUserName:string;
+
   constructor(private router:Router){}
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+
+    sessionStorage.removeItem("userName");    
+    // this.registeredUserName=sessionStorage.getItem("userName");    
+    
     window.sessionStorage.clear();
+    
+    // window.location.reload();    
+
+    this.router.navigate(['home']);  
     this.router.navigate(['home']);    
   }
 

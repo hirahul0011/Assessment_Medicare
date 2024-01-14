@@ -69,7 +69,10 @@ export class LoginComponent implements OnInit {
         this.password==this.registeredUsers[i].registered_user_password){
           this.userConfirm=true;
           this.isSubmitted=true;
-          this.router.navigate(['registeredUser']);
+
+          sessionStorage.setItem("userName",this.registeredUsers[i].registered_user_name);
+          
+          this.router.navigate(['registeredUser/'+this.registeredUsers[i].registered_user_name]);
           break;
         }
       }

@@ -1,1 +1,39 @@
-<p>product-details works!</p>
+<!-- <p>product-details works!</p> -->
+
+<div class="container">
+    <div class="row">
+      <div class="col-3">
+        <div *ngFor="let productImageOrg of productImagesOrg">
+            <img *ngIf="productImageOrg.product_image_id==product.product_image_id"
+            width="100%" [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImageOrg.product_product_image)">
+        </div>                          
+      </div>
+
+      <div class="col">
+        Product Name: {{product.product_name}} <br>
+        Product Price: {{product.product_price}} <br>
+        Product Brand: {{product.product_brand}} <br>
+        Product Status: 
+        <div *ngIf="product.product_status">Available</div>
+        <div *ngIf="!product.product_status">Not Available</div>
+        <!-- {{product.product_status}}  -->
+        <br>
+
+        <button routerLink="" (click)="continueShopping()">
+            Continue Shopping
+        </button> &nbsp;
+        <button routerLink="" (click)="addCart()">
+            Add Cart
+        </button> &nbsp;
+        <button routerLink="" (click)="checkOut()">
+            Check Out
+        </button> &nbsp;
+      </div>
+      <div class="col-3">
+        Cart({{cartCount}})
+      </div>
+    </div>
+</div>
+
+
+

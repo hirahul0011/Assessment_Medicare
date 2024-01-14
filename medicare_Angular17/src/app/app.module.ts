@@ -21,6 +21,10 @@ import {DataTablesModule} from 'angular-datatables';
 import { FileUploadComponentComponent } from './components/file-upload-component/file-upload-component.component';
 import { AdminAddCategoryComponent } from './components/admin-add-category/admin-add-category.component';
 import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { RedirectComponent } from './components/redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { AdminAddProductComponent } from './components/admin-add-product/admin-a
     EditProductComponent,
     FileUploadComponentComponent,
     AdminAddCategoryComponent,
-    AdminAddProductComponent
+    AdminAddProductComponent,
+    CheckoutComponent,
+    PaymentComponent,
+    OrderSummaryComponent,
+    RedirectComponent,    
   ],
   imports: [
     BrowserModule,

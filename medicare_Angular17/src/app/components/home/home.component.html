@@ -6,42 +6,121 @@
         <ul class="list-group"
         *ngFor="let category of categories; let i = index">
         <!-- <a routerLink="/products/{{category.category_id}}" [(ngModel)]="productCategoryId" [value]="category.category_id">             -->
-        <a routerLink="" (click)="clickManage(category.category_id)">            
+        <!-- <a routerLink="" (click)="clickManage(category.category_id)">            
             <li class="list-group-item">{{category.category_name}}</li>
-        </a>                        
+        </a> -->
+        <!-- <a routerLink="{{category.category_name}}">       
+          <li class="list-group-item">{{category.category_name}}</li>
+        </a> -->
+
+        <!-- <a routerLink="" (click)="clickManage(category.category_name)">  
+          <li class="list-group-item">{{category.category_name}}</li>
+        </a> -->
+        <a routerLink="" (click)="clickManage(category.category_id)">  
+          <li class="list-group-item">{{category.category_name}}</li>
+        </a>
         </ul>          
       </div>
 
       <div class="col">
-        <div class="row-3">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <li 
-                    class="list-group-item" 
-                    *ngFor="let productImageOrg of productImagesOrg; let i = index">
-                        <div *ngIf="i==0" class="carousel-item active">
-                            <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImageOrg.product_product_image)">
-                        </div>
-                        <div *ngIf="i!=0" class="carousel-item">
-                            <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImageOrg.product_product_image)">
-                        </div>
-                    </li>                
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+        <div class="row-3" *ngIf="productDetailsFetch">
+          <app-product-details [productId]="productId"></app-product-details>
         </div>
-        <div class="row-3">
-            <div class="container mt-3">
-                <router-outlet></router-outlet>
-            </div>
+
+        <div class="row-3" *ngIf="!productDetailsFetch">
+
+          <!-- <div class="row-3" *ngIf="registeredUserName!=null || registeredUserName!=undefined"> -->
+          <div class="row-3" *ngIf="registeredUserName!=null">
+
+            <form #userForm="ngForm" (ngSubmit)="submitCategorySearch(userForm)">
+              <div class="row">
+                <div class="col-5">              
+                  <select class="form-select" aria-label="Default select example"
+                        [(ngModel)]="productCategoryIdV" 
+                        class="form-control" name="productCategoryId" 
+                        aria-describedby="productCategoryId">                    
+                            <option selected value="">Select</option>                    
+                            <option *ngFor="let category of categories; let i = index"
+                            value="{{category.category_id}}">{{category.category_name}}</option>                                               
+                  </select>              
+                </div> 
+                <div class="col-3">
+                  <button type="submit" class="btn btn-primary">Search</button>
+                </div>                       
+              </div>                        
+            </form>
+            
+            <br>
+  
+          </div>
+  
+          <!-- <div class="row-3" *ngIf="registeredUserName==null  || registeredUserName==undefined"> -->
+          <div class="row-3" *ngIf="registeredUserName==null">
+            <!-- <div class="row-3" *ngIf="!productDetailsFetch"> -->
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                      <li 
+                      class="list-group-item" 
+                      *ngFor="let productImageOrg of productImagesOrg | slice:0:5; let i = index">
+                          <div *ngIf="i==0" class="carousel-item active">
+                              <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImageOrg.product_product_image)">
+                          </div>
+                          <div *ngIf="i!=0" class="carousel-item">
+                              <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImageOrg.product_product_image)">
+                          </div>
+                      </li>                
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+              </div>
+            <!-- </div> -->
+          </div>
+          
+          <div class="row" *ngIf="!productDetailsFetch">
+              <div class="container mt-3">
+                <!-- <p>{{categoryName}}</p>               -->
+                  <!-- <router-outlet> -->
+                  <div *ngIf="categoryFetch">
+                    <!-- <button> -->
+                      <p>
+                        Most View/Sold Medicines(Top 5)
+                      </p>    
+                      <!-- <p>{{categoryId}}</p>   -->
+                      <!-- <ul> -->
+                        <!-- <li *ngFor="let productByCategoryId of productsByCategoryId">{{productByCategoryId.product_name}}</li> -->
+                        <!-- <li *ngFor="let productByCategoryId of productsByCategoryId">{{productByCategoryId |json}}</li> -->
+                      <!-- </ul> -->
+                      <div class="row">
+                        <div class="col" *ngFor="let productByCategoryId of productsByCategoryId | slice:0:5; let i=index">
+                          <!-- <div class="col-3"> -->
+                            <div *ngFor="let productImageOrg of productImagesOrg">
+                              <img *ngIf="productImageOrg.product_image_id==productByCategoryId.product_image_id"
+                              width="100%" [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +productImageOrg.product_product_image)">
+                            </div>                          
+                            Product: {{productByCategoryId.product_name}} <br>
+                            Product Price: {{productByCategoryId.product_price}} <br>
+  
+                            <button routerLink="" (click)="productClickManage(productByCategoryId.product_id)">
+                              View Details
+                            </button>
+                          <!-- </div>   -->
+                        </div>                      
+                      </div>                    
+                    <!-- </button> -->
+                  </div>
+                <!-- </router-outlet> -->
+              </div>
+          </div>
+          
         </div>
+
+        
       </div>
       <!-- <div class="col-3">
         

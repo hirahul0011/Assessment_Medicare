@@ -37,7 +37,9 @@ export class ProductService {
   }
 
   findByProductcategoryid(productcategoryid: any): Observable<Product[]> {
-    return this.http.get<Product[]>(`${baseUrl}?productcategoryid=${productcategoryid}`);
+    // return this.http.get<Product[]>(`${baseUrl}?productcategoryid=${productcategoryid}`);
+    // return this.http.get<Product[]>(`${baseUrl}/productcategoryid=${productcategoryid}`);
+    return this.http.get<Product[]>(`${baseUrl}/productsbycategory/${productcategoryid}`);
   }
 
 

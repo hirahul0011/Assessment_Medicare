@@ -75,7 +75,7 @@ public class ProductController {
 	    
 	  }
 	  
-	  @GetMapping("/products/productcategoryid")
+	  @GetMapping("/products/productsbycategory/{productcategoryid}")
 	  public List<Product> findByProductcategoryid(@PathVariable("productcategoryid") long productcategoryid) {
 		  return productRepository.findByProductcategoryidEquals(productcategoryid);	    
 	  }	  
